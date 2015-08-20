@@ -53,7 +53,9 @@
                     },                    
                     { "sTitle": "View More", "defaultContent": "<button class='employeeInfo'>Info!</button>" },
                     { "sTitle": "Edit Info", "defaultContent": "<button class='employeeEdit'>Edit</button>" },
-            ]
+            ],
+            "aLengthMenu": [[4, 5, 6, 10, 50, -1], [4, 5, 6, 10, 50, "All"]],
+            "iDisplayLength": 5
         });
 
         // on edit button clicks
