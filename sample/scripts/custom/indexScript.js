@@ -55,6 +55,20 @@
                     { "sTitle": "Edit Info", "defaultContent": "<button class='employeeEdit'>Edit</button>" },
             ]
         });
+
+        // on edit button clicks
+        $('#employeeTbl tbody').on('click', 'button.employeeEdit', function () {
+            var employeeTable = $('#employeeTbl').DataTable();
+            var employeeRow = employeeTable.row($(this).parents('tr')).data();
+            alert("EDIT button clicked - Id : " + employeeRow.id + " , name : " + employeeRow.name);
+        });
+
+        // on info button clicks
+        $('#employeeTbl tbody').on('click', 'button.employeeInfo', function () {
+            var employeeTable = $('#employeeTbl').DataTable();
+            var employeeRow = employeeTable.row($(this).parents('tr')).data();
+            alert("INFO button clicked - Id : " + employeeRow.id + " , name : " + employeeRow.name);
+        });
     }
     
     // used to return the employee objects
