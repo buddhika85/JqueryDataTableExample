@@ -17,8 +17,28 @@
             "aoColumns": [
                     { "mData": "id", "sTitle": "ID", "bVisible": false },
                     { "mData": "name", "sTitle": "Name" },
-                    { "mData": "joinDate", "sTitle": "Joined Date" },
-                    { "mData": "salary", "sTitle": "Salary" },
+                    {
+                        "mData": "joinDate", "sTitle": "Joined Date", "mRender": function (data, type, row) {
+                            if (data != null) {
+                                return GetDateStr(data);
+                            }
+                            else {
+                                return 'invalid date';
+                            }
+                        },
+                        "aTargets": [0]
+                    },
+                    {
+                        "mData": "salary", "sTitle": "Salary (£)", "mRender": function (data, type, row) {
+                            if (data != null) {
+                                return RoundUpTo(data, 2);
+                            }
+                            else {
+                                return 0.00;
+                            }
+                        },
+                        "aTargets": [0]
+                    },
                     { "mData": "departmentName", "sTitle": "Department" },
                     {
                         "mData": "logo", "sTitle": "Logo", "mRender": function (data, type, row) {
@@ -50,11 +70,26 @@
             { "id": 5, "name": "Jack Siddle", "joinDate": new Date(2011, 10, 30), "salary": 1500.5555, "departmentName": "Engineering", "logo": '../sample/logos/engineering.png' },
             { "id": 6, "name": "Gill James", "joinDate": new Date(2012, 12, 30), "salary": 1300.999, "departmentName": "Marketting", "logo": '../sample/logos/marketting.png' },
             { "id": 7, "name": "Alex Starc", "joinDate": new Date(2013, 1, 1), "salary": 1200.999, "departmentName": "Finance", "logo": '../sample/logos/finance.png' },
-            { "id": 8, "name": "Micheal Clark", "joinDate": new Date(2013, 2, 1), "salary": 1300.999, "departmentName": "Human Resource", "logo": '../sample/logos/humanResource.png' }
+            { "id": 8, "name": "Micheal Clark", "joinDate": new Date(2013, 2, 1), "salary": 1300.999, "departmentName": "Human Resource", "logo": '../sample/logos/humanResource.png' },
+            { "id": 9, "name": "Shane Gilchirist", "joinDate": new Date(2011, 10, 30), "salary": 1500.5555, "departmentName": "Engineering", "logo": '../sample/logos/engineering.png' },
+            { "id": 10, "name": "Adam Warne", "joinDate": new Date(2011, 10, 30), "salary": 1500.5555, "departmentName": "Engineering", "logo": '../sample/logos/engineering.png' },
+            { "id": 11, "name": "Ricky Hayden", "joinDate": new Date(2011, 10, 30), "salary": 1500.5555, "departmentName": "Engineering", "logo": '../sample/logos/engineering.png' },
+            { "id": 12, "name": "Mathew Ponting", "joinDate": new Date(2011, 10, 30), "salary": 1500.5555, "departmentName": "Engineering", "logo": '../sample/logos/engineering.png' }
         ];
         return employees;
     }
 
-    
+    // float value round up
+    function RoundUpTo(floatValue, numOfDecimalPlaces)
+    {
+        floatValue = parseFloat(floatValue);
+        return floatValue.toFixed(numOfDecimalPlaces);
+    }
+
+    // get date obj in dd/mm/yyyy format
+    function GetDateStr(date)
+    {
+        return date.getDate() + '/' + date.getMonth() + '/' + date.getFullYear();
+    }
 
 })();
